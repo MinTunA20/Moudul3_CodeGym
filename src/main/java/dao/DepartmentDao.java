@@ -1,40 +1,40 @@
-package DAO;
+package dao;
 
 import connectDB.Connect_MySQL;
-import model.phongban;
+import model.Department;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+public class DepartmentDao implements CRUD<Department> {
 
-public class phongbanDAO implements CRUD<phongban> {
     @Override
-    public List<phongban> getAll() {
-        String sql = "select * from classstudent";
-        List<phongban> classStudents = new ArrayList<>();
+    public List<Department> getAll() {
+        String sql = "select * from phongban";
+        List<Department> departments = new ArrayList<>();
         try (Connection connection = Connect_MySQL.getConnect()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                int idPhongban = resultSet.getInt(1);
-                String namePhongban = resultSet.getString(2);
-                phongban.add(new phongban(idPhongban, namePhongban));
+                int idD = resultSet.getInt(1);
+                String nameD = resultSet.getString(2);
+                departments.add(new Department(idD, nameD));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return classStudents;
+        return departments;
     }
 
     @Override
-    public boolean create(phongban phongban) {
+    public boolean create(Department department) {
         return false;
     }
 
     @Override
-    public boolean edit(int id, phongban phongban) {
+    public boolean edit(int id, Department department) {
         return false;
     }
 
@@ -44,18 +44,18 @@ public class phongbanDAO implements CRUD<phongban> {
     }
 
     @Override
-    public static phongban findById(int id) {
-        String sql = "select * from department where id = ?";
+    public Department findById(int id) {
+        String sql = "select * from phongban where idphongban = ?";
         try (Connection connection = Connect_MySQL.getConnect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             resultSet.next();
-            int idPhongban = resultSet.getInt(1);
-            String namePhongban = resultSet.getString(2);
-            phongban phongban = new phongban(idPhongban, namePhongban);
-            return phongban ;
+            int idClass = resultSet.getInt(1);
+            String nameClass = resultSet.getString(2);
+            Department department = new Department(idClass, nameClass);
+            return department;
 
 
         } catch (SQLException throwables) {
@@ -63,4 +63,5 @@ public class phongbanDAO implements CRUD<phongban> {
         }
         return null;
     }
+
 }

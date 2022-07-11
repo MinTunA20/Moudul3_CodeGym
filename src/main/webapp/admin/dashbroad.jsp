@@ -314,14 +314,14 @@
 
                 <th colspan="2">Hành động</th>
                 </tr>
-                <c:forEach var="phongban" items="${sessionScope.phongban}">
+                <c:forEach var="Department" items="${requestScope.Department}">
                     <tr>
-                        <td>${phongban.idCPhongban}</td>
-                        <td>${phongban.namePhongban}</td>
+                        <td>${Department.idPhongban}</td>
+                        <td>${Department.namePhongban}</td>
 
-                        <td><a href="/admin?action=edit&id=${phongban.idPhongban}" ><button type="button" class="btn btn-warning">Edit</button>
+                        <td><a href="/admin?action=edit&id=${Department.idPhongban}" ><button type="button" class="btn btn-warning">Edit</button>
                         </a>
-                            <a href="/admin?action=delete&id=${phongban.idPhongban}" class="delete"  ><button type="button" class="btn btn-danger" >Delete</button>
+                            <a href="/admin?action=delete&id=${Department.idPhongban}" class="delete"  ><button type="button" class="btn btn-danger" >Delete</button>
                             </a></td>
                     </tr>
                 </c:forEach>
@@ -373,17 +373,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="p" items="${sessionScope.nhanvien}"
+                        <c:forEach var="p" items="${requestScope.Staff}"
                         >
                         <tr>
-                            <td>${p.idNhanvien}</td>
-                            <td>${p.nameNhanvien}</td>
-                            <td><${p.doB}>   </td>
+                            <td>${p.id}</td>
+                            <td>${p.name}</td>
+                            <td><${p.birth}>   </td>
                             <td>${p.address}</td>
-                            <td>${p.phoneNumber}</td
-                            <td>${p.phongban.getnamePhongban()}</td>
-                            <td><a href="/admin?action=edit&id=${p.idNhanvien}" class="edit" ><i class="material-icons" title="Edit">&#xE254;</i></a>
-                                <a href="/admin?action=delete&id=${p.idNhanvien}" class="delete" ><i class="material-icons" title="Delete">&#xE872;</i></a>
+                            <td>${p.phone}</td
+                            <td>${p.email}</td
+                            <td>${p.Department.getnamePhongban()}</td>
+                            <td><a href="/admin?action=edit&id=${p.id}" class="edit" ><i class="material-icons" title="Edit">&#xE254;</i></a>
+                                <a href="/admin?action=delete&id=${p.id}" class="delete" ><i class="material-icons" title="Delete">&#xE872;</i></a>
                             </td>
                         </tr>
                         </c:forEach>

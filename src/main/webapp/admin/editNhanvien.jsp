@@ -296,13 +296,13 @@
                     </div>
                 </div>
             </div>
-            <form action="/admin?action=edit&id=${sessionScope.nhanvien.idNhanvien}" method="post">
+            <form action="/admin?action=edit&id=${requestScope.nhanvien.idNhanvien}" method="post">
                 <br>
                 <table>
                     <tr>
                         <td>Phòng ban</td>
                         <td><select name="phongban" id="phongban">
-                            <c:forEach var="c" items="${sessionScope.phongban}">
+                            <c:forEach var="c" items="${requestScope.phongban}">
                                 <option class="namephongban"
                                         value="${c.getIdphongban()}">${c.getNamephongban()}</option>
                             </c:forEach>
@@ -311,24 +311,24 @@
                     <tr>
                         <td>Tên Nhân viên</td>
                         <td><input type="text" name="nameNhanvien" id="nameNhanvien"
-                                   value="${sessionScope.nhanvien.nameNhanvien}"></td>
+                                   value="${requestScope.nhanvien.nameNhanvien}"></td>
                     </tr>
-                    <input name="oldIMG" value="${sessionScope.nhanvien.getImgURL()}" hidden>
+                    <input name="oldIMG" value="${requestScope.nhanvien.getImgURL()}" hidden>
                     
                     <tr>
                         <td>Số điện thoại</td>
-                        <td><input type="text" name="phoneNumber" id="phineNumber" value="${sessionScope.nhanvien.phoneNumber}"></td>
+                        <td><input type="text" name="phone" id="phone" value="${requestScope.nhanvien.phone}"></td>
                     </tr>
                     <tr>
                         <td>Email</td>
-                        <td><input type="number" name="Email" id="Email" value="${sessionScope.nhanvien.Email}">
+                        <td><input type="number" name="Email" id="Email" value="${requestScope.nhanvien.Email}">
                         </td>
                     </tr>
                     <tr>
                     <tr>
                       
                         <td><input type="number" name="address" id="address"
-                                   value="${sessionScope.nhanvien.address}"></td>
+                                   value="${requestScope.nhanvien.address}"></td>
                     </tr>
 
                 </table>
@@ -340,7 +340,7 @@
 </div>
 </body>
 <script>
-    let x =${sessionScope.nhanvien.getphongban().getIdphongban()};
+    let x =${requestScope.nhanvien.getphongban().getIdphongban()};
     let phongban = document.querySelectorAll('.namephongban');
     for (let i = 0; i < phongban.length; i++) {
         let value1 = phongban[i].getAttribute('value')
