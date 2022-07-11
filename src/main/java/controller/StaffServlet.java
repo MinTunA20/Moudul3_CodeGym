@@ -71,6 +71,8 @@ public class StaffServlet extends HttpServlet {
                 }
                 break;
             default:
+                showStaff(req, resp);
+
                 break;
         }
     }
@@ -174,7 +176,7 @@ public class StaffServlet extends HttpServlet {
             staffDao.edit(id,staff);
             request.setAttribute("staff", staff);
             request.setAttribute("message", "Staff information was updated");
-            dispatcher = request.getRequestDispatcher("admin/editNhanvien.jsp");
+            dispatcher = request.getRequestDispatcher("admin/edit.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -193,7 +195,7 @@ public class StaffServlet extends HttpServlet {
         } else {
             staffDao.delete(id);
             try {
-                response.sendRedirect("/admin/dashboard");
+                response.sendRedirect("/dashboard");
             } catch (IOException e) {
                 e.printStackTrace();
             }
