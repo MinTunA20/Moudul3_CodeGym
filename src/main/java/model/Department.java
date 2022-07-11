@@ -2,11 +2,11 @@ package model;
 
 public class Department {
     private int id;
-    private String nameD;
+    private String nameDep;
 
-    public Department(int id, String nameD) {
+    public Department(int id, String nameDep) {
         this.id = id;
-        this.nameD = nameD;
+        this.nameDep = nameDep;
     }
 
     public int getId() {
@@ -17,11 +17,11 @@ public class Department {
         this.id = id;
     }
 
-    public String getNameD() {
-        return nameD;
+    public String getnameDep() {
+        return nameDep;
     }
 
-    public void setNameD(String nameD) {
-        this.nameD = nameD;
+    public void setnameDep(String nameDep) {
+        this.nameDep = nameDep;
     }
 }

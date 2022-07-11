@@ -378,11 +378,11 @@
                         <tr>
                             <td>${p.id}</td>
                             <td>${p.name}</td>
-                            <td><${p.birth}>   </td>
+                            <td>${p.birth}</td>
                             <td>${p.address}</td>
                             <td>${p.phone}</td
                             <td>${p.email}</td
-                            <td>${p.Department.getnamePhongban()}</td>
+                            <td>${p.getDepartment().getNameDep()}</td>
                             <td><a href="/admin?action=edit&id=${p.id}" class="edit" ><i class="material-icons" title="Edit">&#xE254;</i></a>
                                 <a href="/admin?action=delete&id=${p.id}" class="delete" ><i class="material-icons" title="Delete">&#xE872;</i></a>
                             </td>

@@ -66,7 +66,7 @@ public class StaffServlet extends HttpServlet {
                 }else {
                     List<Staff> staffs = staffDao.getSearch(searchName);
                     req.setAttribute("staffs", staffs);
-                    RequestDispatcher dispatcher = req.getRequestDispatcher("view/staff.jsp");
+                    RequestDispatcher dispatcher = req.getRequestDispatcher("admin/dashboard.jsp");
                     dispatcher.forward(req, resp);
                 }
                 break;
@@ -78,7 +78,7 @@ public class StaffServlet extends HttpServlet {
     public void showStaff(HttpServletRequest request, HttpServletResponse response) {
         List<Staff> staffs = staffDao.getAll();
         request.setAttribute("staffs", staffs);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/staff.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/dashboard.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -91,7 +91,7 @@ public class StaffServlet extends HttpServlet {
     public void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
         List<Department> departments = departmentDao.getAll();
         request.setAttribute("department", departments);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/createNhanvien.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -108,7 +108,7 @@ public class StaffServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             request.setAttribute("staff", staff);
-            dispatcher = request.getRequestDispatcher("view/edit.jsp");
+            dispatcher = request.getRequestDispatcher("admin/editNhanvien.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -126,7 +126,7 @@ public class StaffServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             request.setAttribute("staff", staff);
-            dispatcher = request.getRequestDispatcher("view/delete.jsp");
+            dispatcher = request.getRequestDispatcher("admin/delete.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -147,7 +147,7 @@ public class StaffServlet extends HttpServlet {
         int idD = Integer.parseInt(request.getParameter("departments"));
         Staff st = new Staff(id, name, birth, address, phone, email, departmentDao.findById(idD));
         staffDao.create(st);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/createNhanvien.jsp");
         request.setAttribute("message", "New staff was created");
         try {
             dispatcher.forward(request, response);
@@ -174,7 +174,7 @@ public class StaffServlet extends HttpServlet {
             staffDao.edit(id,staff);
             request.setAttribute("staff", staff);
             request.setAttribute("message", "Staff information was updated");
-            dispatcher = request.getRequestDispatcher("view/edit.jsp");
+            dispatcher = request.getRequestDispatcher("admin/editNhanvien.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -193,7 +193,7 @@ public class StaffServlet extends HttpServlet {
         } else {
             staffDao.delete(id);
             try {
-                response.sendRedirect("/staff");
+                response.sendRedirect("/admin/dashboard");
             } catch (IOException e) {
                 e.printStackTrace();
             }
