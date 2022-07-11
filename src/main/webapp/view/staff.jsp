@@ -274,7 +274,7 @@
         }
     </style>
 </head>
-<tbody>
+
 <div>
     <nav-bar>
 
@@ -317,6 +317,10 @@
             <td><a href="/staff?action=delete&id=${staff.getId()}">delete</a></td>
         </tr>
     </c:forEach>
+
 </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
