@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hauhc1203
-  Date: 06/07/2022
-  Time: 10:15
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -291,122 +284,39 @@
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
-                <div class="row"> <th colspan="5" class = col-sm-6> <h2>Danh sách <b>Phòng Ban</b></h2> </th>
+                <div class="row"> <th colspan="5" class = col-sm-6> <h2>Danh sách <b> Nhân Viên</b></h2> </th>
                 </div>
             </div>
+<form action=/staff?action=search method="post">
+    <input type="text" name="searchName"> <button type="submit">Search</button>
+
+</form>
+<p>
+    <a href="/staff?action=create">Create new staff</a>
+</p>
             <table class="table table-striped table-hover">
-                <tr>
-                <tr>
-
-                    <td  colspan="5" style="text-align: left " >
-                        <div class="hau">
-                            <form action="/admin?action=search" method="post" style="margin: 0">
-                                <input type="search" placeholder="nhập tên Nhân viên" name="key" class="search" required>
-                                <button type="submit" class="btn btn-info">Tìm kiếm </button>
-                            </form>
-                        </div>
-                    </td>
-
-                </tr>
-                <th>Mã Phòng ban</th>
-                <th>Tên phòng</th>
-
-
-                <th colspan="2">Hành động</th>
-                </tr>
-                <c:forEach var="Department" items="${requestScope.Department}">
-                    <tr>
-                        <td>${Department.idPhongban}</td>
-                        <td>${Department.namePhongban}</td>
-
-                        <td><a href="/admin?action=edit&id=${Department.idPhongban}" ><button type="button" class="btn btn-warning">Edit</button>
-                        </a>
-                            <a href="/admin?action=delete&id=${Department.idPhongban}" class="delete"  ><button type="button" class="btn btn-danger" >Delete</button>
-                            </a></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div>
-        <%--    </div>--%>
-
-        <%--&lt;%&ndash;<a href="/admin?action=insert" methods="post">&ndash;%&gt;--%>
-        <%--&lt;%&ndash;    <button type="button" class="btn btn-primary">Thêm loại sản phẩm</button>&ndash;%&gt;--%>
-        <%--&lt;%&ndash;</a>&ndash;%&gt;--%>
-        <%--</div>--%>
-
-        <%--<div><form action="/admin?action=search" method="post" style="margin: 0">--%>
-        <%--    <input type="search" placeholder="nhập vào tên" name="key"  class="search">--%>
-        <%--    <button type="submit" class="btn btn-info">Search</button>--%>
-        <%--</form>--%>
-        <%--</div>--%>
-
-
-        <div class="container-xl">
-            <div class="table-responsive">
-                <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h2>Danh Sách <b>Nhân viên</b></h2>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="/admin?action=create" methods="post" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Thêm nhân viên mới</span></a>
-                                <a><form action="/admin?action=search" method="post" style="margin: 0">
-                                    <input type="search" placeholder="nhập vào tên" name="key"  class="search">
-                                    <button type="submit" class="btn btn-info">Search</button>
-                                </form>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>Mã nhân viên</th>
-                            <th>Tên</th>
-                            <th>Ngày sinh</th>
-                            <th>Địa chỉ</th>
-                            <th>Số điện thoại</th>
-                            <th>Email</th>
-                            <th>Phòng ban</th>
-                            <th colspan="2">Hành động</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="p" items="${requestScope.Staff}"
-                        >
-                        <tr>
-                            <td>${p.id}</td>
-                            <td>${p.name}</td>
-                            <td>${p.birth}</td>
-                            <td>${p.address}</td>
-                            <td>${p.phone}</td
-                            <td>${p.email}</td
-                            <td>${p.getDepartment().getNameDep()}</td>
-                            <td><a href="/admin?action=edit&id=${p.id}" class="edit" ><i class="material-icons" title="Edit">&#xE254;</i></a>
-                                <a href="/admin?action=delete&id=${p.id}" class="delete" ><i class="material-icons" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        </c:forEach>
-                    </table>
-                    <div class="clearfix">
-                        <div class="hint-text">Hiển thị <b>5</b> out of <b>25</b> Sản phẩm</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item "><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <%--<a href="/admin?action=create">--%>
-            <%--    <button type="button" class="btn btn-primary">Create</button>--%>
-            <%--</a>--%>
-</tbody>
+    <tr>
+        <td>Name</td>
+        <td>Birth</td>
+        <td>Address</td>
+        <td>Phone Number</td>
+        <td>Email</td>
+        <td>Department</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </tr>
+    <c:forEach items='${requestScope["staffs"]}' var="staff">
+        <tr>
+            <td>${staff.getName()}</td>
+            <td>${staff.getBirth()}</td>
+            <td>${staff.getAddress()}</td>
+            <td>${staff.getPhone()}</td>
+            <td>${staff.getMail()}</td>
+            <td>${staff.getDepartment().getNameD()}</td>
+            <td><a href="/staff?action=edit&id=${staff.getId()}">edit</a></td>
+            <td><a href="/staff?action=delete&id=${staff.getId()}">delete</a></td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>
